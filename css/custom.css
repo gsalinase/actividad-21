@@ -1,0 +1,40 @@
+html body {
+	font-family: 'Lato', sans-serif;
+
+}
+
+header {
+    background: green;
+}
+
+nav li a{
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+}
+
+nav li a:hover{
+    border: none;
+    background: white;
+    color: green;
+}
+
+#features {
+    background: green;
+}
+
+#footer {
+    background: green;
+}
+
+.post .boton-rojo {
+    background: red;
+    width: 100px;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.post .boton-rojo span{
+    background: red;
+    color: white;
+
