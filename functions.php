@@ -61,10 +61,11 @@ add_action( 'after_setup_theme', 'lawyeria_lite_theme_setup' );
  *  WP Enqueue Style
  */
 function lawyeria_lite_enqueue_style() {
-    wp_enqueue_style( 'lawyeria_lite_custom',
-     get_stylesheet_uri().'/css/custom.css', array(), null );
     wp_enqueue_style( 'lawyeria_lite_style', get_stylesheet_uri(), array(), '1.0' );
+    wp_enqueue_style( 'lawyeria_lite_custom',
+     get_template_directory_uri().'/css/custom.css', array(), null );
     wp_enqueue_style( 'lawyeria_lite_fancybox', get_template_directory_uri() . '/css/jquery.fancybox.css', array(), '1.0' );
+    wp_enqueue_style( 'lawyeria_lite_twenty', get_template_directory_uri() . '/css/twentytwenty.css', array(), '1.0' );
 }
 
 add_action( 'wp_enqueue_scripts', 'lawyeria_lite_enqueue_style' );
@@ -410,3 +411,60 @@ function lawyeria_lite_default_title( $title ) {
 
 	return $title;
 }
+
+// Register Custom Post Type
+function noticias_post_type() {
+
+    $labels = array(
+        'name'                  => _x( 'Noticias', 'Post Type General Name', 'text_domain' ),
+        'singular_name'         => _x( 'Noticia', 'Post Type Singular Name', 'text_domain' ),
+        'menu_name'             => __( 'Noticias', 'text_domain' ),
+        'name_admin_bar'        => __( 'Noticias', 'text_domain' ),
+        'archives'              => __( 'Archivos', 'text_domain' ),
+        'attributes'            => __( 'Atributos', 'text_domain' ),
+        'parent_item_colon'     => __( 'Parent Item:', 'text_domain' ),
+        'all_items'             => __( 'Todo', 'text_domain' ),
+        'add_new_item'          => __( 'Agregar nuevo item', 'text_domain' ),
+        'add_new'               => __( 'Agregar item', 'text_domain' ),
+        'new_item'              => __( 'Nuevo item', 'text_domain' ),
+        'edit_item'             => __( 'Editar item', 'text_domain' ),
+        'update_item'           => __( 'Actualizar Item', 'text_domain' ),
+        'view_item'             => __( 'Ver Item', 'text_domain' ),
+        'view_items'            => __( 'Ver item', 'text_domain' ),
+        'search_items'          => __( 'Buscar Item', 'text_domain' ),
+        'not_found'             => __( 'No encontrado', 'text_domain' ),
+        'not_found_in_trash'    => __( 'En la papelera', 'text_domain' ),
+        'featured_image'        => __( 'Imagen principal', 'text_domain' ),
+        'set_featured_image'    => __( 'Usar imagen principal', 'text_domain' ),
+        'remove_featured_image' => __( 'Eliminar imagen principal', 'text_domain' ),
+        'use_featured_image'    => __( 'Use as featured image', 'text_domain' ),
+        'insert_into_item'      => __( 'Insert into item', 'text_domain' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this item', 'text_domain' ),
+        'items_list'            => __( 'Items list', 'text_domain' ),
+        'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
+        'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
+    );
+    $args = array(
+        'label'                 => __( 'Noticia', 'text_domain' ),
+        'description'           => __( 'Noticias everywhere', 'text_domain' ),
+        'labels'                => $labels,
+        'supports'              => array( 'title', 'editor', 'excerpt', 'thumbnail', ),
+        'taxonomies'            => array( 'category', 'post_tag' ),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 5,
+        'menu_icon'             => 'dashicons-format-aside',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,        
+        'exclude_from_search'   => true,
+        'publicly_queryable'    => true,
+        'capability_type'       => 'page',
+    );
+    register_post_type( 'noticias', $args );
+
+}
+add_action( 'init', 'noticias_post_type', 0 );

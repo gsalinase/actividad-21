@@ -14,7 +14,7 @@
 		<title><?php wp_title('|', true, 'right'); ?></title>
 		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 		<!--[if lt IE 9]>
-		<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
+		<script src="?>/js/html5.js"></script>
 		<link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/ie.css" type="text/css">
 		<![endif]-->	
 

@@ -37,4 +37,4 @@
 			</div><!--/div .wrapper-->
 		</section><!--/section #content-->
 		<?php get_footer(); ?>
-		
+		<?php get_template_part('script', 'script-twenty-twenty') ?>
