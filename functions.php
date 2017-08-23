@@ -83,7 +83,7 @@ function lawyeria_lite_slug_fonts_url() {
     * supported by Open Sans, translate this to 'off'. Do not translate
     * into your own language.
     */
-    $roboto = _x( 'on', 'Roboto font: on or off', 'zerif-lite' );
+    $roboto = _x( 'off', 'Roboto font: on or off', 'zerif-lite' );
  
     if ( 'off' !== $lato || 'off' !== $roboto ) {
         $font_families = array();
